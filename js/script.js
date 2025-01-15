@@ -33,7 +33,6 @@ const enhanceNavigation = () => {
 window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const sections = document.querySelectorAll('section');
-    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         if (scrolled >= sectionTop - 600) {
@@ -43,7 +42,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Initialize AOS
 AOS.init({
     duration: 1000,
     once: true
@@ -124,16 +122,12 @@ document.querySelectorAll('.interactive-card').forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
         const angleX = (y - centerY) / 20;
         const angleY = (centerX - x) / 20;
-        
         card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
     });
-    
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
     });
@@ -163,7 +157,6 @@ document.getElementById('guestbook-form').addEventListener('submit', (e) => {
         message: document.getElementById('message').value,
         rating: document.querySelector('input[name="rating"]:checked')?.value
     };
-    
     console.log('Form submitted:', formData);
     alert('Thank you for your message!');
     e.target.reset();
